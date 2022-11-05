@@ -1,0 +1,39 @@
+1.  What would you like to do?
+View All Employees
+Add Employees
+Update Employee Role
+View All Roles
+Add Role
+View All Departments
+Add a Department
+
+2. View All Departments
+Enginnering
+Finance
+Legal
+Sales
+
+3. View All Roles
+Sales Lead > Sales > 100,000
+Salesperson > Sales > 80,000
+Lead Engineer > Engineering > 150,000
+Sofware Engineer > Engineering > 120,000
+Account Manager > Finance > 160,000
+Accountant > Finance > 125,000
+Legal Team Lead > Legal > 250,000
+Lawyer > Legal > 190,000
+
+4. View All Employees
+John > Doe > Sales Lead > Sales > 100,000 > (manager) null
+Mike > Chan > Salesperson > Sales > 80,000 > (manager) Joe Doe
+Ashley > Rodriguez > Engineer > Engineering > 150,000 > (manager) null
+
+What would you like to do?  Add a Department
+What is the name of the department?  Service
+Added service to the database
+What would you like to do?  Add Role
+What is the name of the role?  Customer service
+What is the salary of the role?  80,000
+Which department does the role belong to?  Service
+Added Customer Service to the database
+What would you like to do?  View All Employees

@@ -35,13 +35,15 @@ When a user views all employees they are presented with a formatted table showin
 * salaries; 
 * managers that the employees report to.
 
-When a user chooses to add a department they are prompted to enter the name of the department and that department is added to the database.
+When a user chooses to add a department they are prompted to:
+* enter the name of the department.
+Then that department is added to the database.
 
 When a user chooses to add a role, they are prompted to: 
 * enter the name for the role;
 * enter the salary for the role; 
 * enter department for the role.
-Then the role is added to the database.
+Then that role is added to the database.
 
 When a user chooses to add an employee they are prompted to enter the employee's:
 * first name;
@@ -53,7 +55,7 @@ Then that employee is added to the database.
 When a user chooses to update an employee's role they are prompted to:
 * select an employee to update; 
 * select the employee's new.
-Then this information is updated in the database. 
+Then that information is updated in the database. 
 
 ## Code
 

@@ -20,12 +20,12 @@ inquirer.prompt([
     message: 'What would you like to do?',
     choices: [
       'View all Departments',
-      'Add a Department',
       'View all Roles',
-      'Add a Role',
-      'Update Employee Role',
       'View all Employees',
+      'Add a Department',
+      'Add a Role',
       'Add an Employee',
+      'Update Employee Role',
       'Quit',
     ],
   }
@@ -35,23 +35,23 @@ inquirer.prompt([
     case 'View all Departments':
       viewAllDepartments();
       break;
+    case 'View all Roles':
+        viewAllRoles();
+        break;
+      case 'View all Employees':
+      viewAllEmployees();
+      break;
     case 'Add a Department':
       addDepartment();
-      break;
-    case 'View all Roles':
-      viewAllRoles();
       break;
     case 'Add a Role':
       addRole();
       break;
-    case 'Update Employee Role':
-      updateEmployeeRole();
-      break;
-    case 'View all Employees':
-      viewAllEmployees();
-      break;
     case 'Add an Employee':
       addEmployee();
+      break;
+    case 'Update Employee Role':
+      updateEmployeeRole();
       break;
     default:
       process.exit();

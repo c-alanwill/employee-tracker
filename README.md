@@ -37,25 +37,25 @@ When a user chooses **view all employees** they are presented with a formatted t
 
 When a user chooses to **add a department** they are prompted to:
 * enter the name of the department.<br>
-Then that department is added to the database.
+*Then that department is added to the database.*
 
 When a user chooses to **add a role** they are prompted to: 
 * enter the name for the role;
 * enter the salary for the role; 
 * enter department for the role.<br>
-Then that role is added to the database.
+*Then that role is added to the database.*
 
 When a user chooses to **add an employee** they are prompted to enter the employee's:
 * first name;
 * last name;
 * role; 
 * manager.<br>
-Then that employee is added to the database.
+*Then that employee is added to the database.*
 
 When a user chooses to **update an employee role** they are prompted to:
 * select an employee to update; 
 * select the employee's new role.<br>
-Then that information is updated in the database. 
+*Then that employee role is updated in the database.* 
 
 ## Code
 

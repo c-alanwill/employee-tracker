@@ -34,31 +34,24 @@ inquirer.prompt([
   switch (answer.action) {
     case 'View all Departments':
       viewAllDepartments();
-      //  this is how it should be changed.  change console log in others like viewAllDepartments and remove contain();
       break;
     case 'Add a Department':
-      console.log('You want to add a department');
-      contain();
+      addDepartment();
       break;
     case 'View all Roles':
-      console.log('You want to view all roles');
-      contain();
+      viewAllRoles();
       break;
     case 'Add a Role':
-      console.log('You want to add a role');
-      contain();
+      addRole();
       break;
     case 'Update Employee Role':
-      console.log('You want to a role');
-      contain();
+      updateEmployeeRole();
       break;
     case 'View all Employees':
-      console.log('You want to view all employees');
-      contain();
+      viewAllEmployees();
       break;
-      case 'Add an Employee':
-      console.log('You want to add an employee');
-      contain();
+    case 'Add an Employee':
+      addEmployee();
       break;
     default:
       process.exit();
@@ -79,6 +72,14 @@ function viewAllDepartments() {
   //  if we had a paramater on 74 we would pass it.  You will need to have a function for each add above where you replace console.log and move contain to down here.  See note on line 37.  You can do lines 71 through 77 different using promise.  See video at 49:00 and after.  When you get into tougher callbacks you have to nest and becomes callback hell when looking at bonus, but not sure if it applies to the non-bonus callbacks we need to do.
 }
 
+// function addDepartment() {
+//   const sql = 'SELECT * FROM department';
+//   db.query(sql, (err, result) => {
+//     if (err) return console.log(err);
+//     console.table(result);
+//     contain();
+//   });
+
 
 // Query database - department refers to the table
 // db.query('SELECT * FROM department', function (err, results) {
@@ -92,6 +93,6 @@ app.use((req, res) => {
     res.status(404).end();
   });
   
-  app.listen(PORT, () => {
+app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });

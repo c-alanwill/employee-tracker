@@ -65,8 +65,6 @@ The application uses the [console.table package](https://www.npmjs.com/package/c
 
 Comments have been applied to the different files in the code to identify each section of code. 
 
-## Code
-
 There is an index.js file that starts the application.
 
 Included is a package.json file with the required dependencies, as well as gitignore, node_modules and .DS_Store files.

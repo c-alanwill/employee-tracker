@@ -63,32 +63,73 @@ contain();
 
 function viewAllDepartments() {
   const sql = 'SELECT * FROM department';
-  // if it's not all you will have to write different.  See around :45 minutes in OOP day 1
   db.query(sql, (err, result) => {
     if (err) return console.log(err);
     console.table(result);
     contain();
   });
-  //  if we had a paramater on 74 we would pass it.  You will need to have a function for each add above where you replace console.log and move contain to down here.  See note on line 37.  You can do lines 71 through 77 different using promise.  See video at 49:00 and after.  When you get into tougher callbacks you have to nest and becomes callback hell when looking at bonus, but not sure if it applies to the non-bonus callbacks we need to do.
 }
 
-// function addDepartment() {
-//   const sql = 'SELECT * FROM department';
-//   db.query(sql, (err, result) => {
-//     if (err) return console.log(err);
-//     console.table(result);
-//     contain();
-//   });
+function viewAllRoles(){
+  const sql = 'SELECT * FROM role';
+  db.query(sql, (err, result) => {
+    if (err) return console.log(err);
+    console.table(result);
+    contain();
+  });
+}
 
+function viewAllEmployees(){
+  const sql = 'SELECT * FROM employee';
+  db.query(sql, (err, result) => {
+    if (err) return console.log(err);
+    console.table(result);
+    contain();
+  });
+}
 
-// Query database - department refers to the table
-// db.query('SELECT * FROM department', function (err, results) {
-//   console.log(results);
-// });
+function addDepartment(){
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'department_name',
+      message: 'What department would you like to add?',
+    }
+  ]).then (answer => {
+    db.query('INSERT INTO department(name) VALUES (?)', [
+      answer.department_name
+    ], (err) => {
+      viewAllDepartments()
+    })
+  });
+}
 
-// module.exports = db;
+function addRole() {
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'title',
+      message: 'What is your title?',
+    },
+    {
+      type: 'input',
+      name: 'salary',
+      message: 'What is the salary of role?'
+    },
+    {
+      type: 'input',
+      name: 'department_id',
+      message: 'What is the department id?'
+    },
+  ]). then (answer => {
+    db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [
+      answer.title, answer.salary, answer.department_id
+    ], (err) => {
+      viewAllRoles()
+    });
+  });
+}
 
-// Default response for any other request (Not Found)
 app.use((req, res) => {
     res.status(404).end();
   });
@@ -96,3 +137,42 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // On line 65 if it's not all you will have to write different.  See around :45 minutes in OOP day 1
+
+  // function addDepartment() {
+//   const sql = 'SELECT * FROM department';
+//   db.query(sql, (err, result) => {
+//     if (err) return console.log(err);
+//     console.table(result);
+//     contain();
+//   });
+  
+  // Query database - department refers to the table
+// db.query('SELECT * FROM department', function (err, results) {
+//   console.log(results);
+// });
+
+// module.exports = db;
+
+// Default response for any other request (Not Found)
+
+
+    //  You can do lines 71 through 77 different using promise.  See video at 49:00 and after.  When you get into tougher callbacks you have to nest and becomes callback hell when looking at bonus, but not sure if it applies to the non-bonus callbacks we need to do.
+

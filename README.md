@@ -20,11 +20,11 @@ When the application is started, the user is presented with the following option
 
 When a user chooses to **view all departments** they are presented with a formatted table showing department names and department ids.  
 
-When a user chooses to **views all roles** they are presented with:
-* the job title; 
+When a user chooses to **view all roles** they are presented with:
 * role id; 
-* the department that role belongs to; 
+* the job title; 
 * the salary for the role.
+* the department id that role belongs to; 
 
 When a user chooses **view all employees** they are presented with a formatted table showing employee data, including: 
 * employee ids; 
@@ -40,16 +40,16 @@ When a user chooses to **add a department** they are prompted to:
 *Then that department is added to the database.*
 
 When a user chooses to **add a role** they are prompted to: 
-* enter the name for the role;
+* enter the job title for the role;
 * enter the salary for the role; 
-* enter department for the role.<br>
+* enter the department id for the role.<br>
 *Then that role is added to the database.*
 
 When a user chooses to **add an employee** they are prompted to enter the employee's:
 * first name;
 * last name;
-* role; 
-* manager.<br>
+* role id; 
+* manager id.<br>
 *Then that employee is added to the database.*
 
 When a user chooses to **update an employee role** they are prompted to:

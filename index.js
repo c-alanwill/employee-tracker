@@ -36,9 +36,9 @@ inquirer.prompt([
       viewAllDepartments();
       break;
     case 'View all Roles':
-        viewAllRoles();
-        break;
-      case 'View all Employees':
+      viewAllRoles();
+      break;
+    case 'View all Employees':
       viewAllEmployees();
       break;
     case 'Add a Department':
@@ -93,7 +93,7 @@ function addDepartment(){
     {
       type: 'input',
       name: 'department_name',
-      message: 'What department would you like to add?',
+      message: 'Enter a name for the department.'
     }
   ]).then (answer => {
     db.query('INSERT INTO department(name) VALUES (?)', [
@@ -104,31 +104,59 @@ function addDepartment(){
   });
 }
 
-function addRole() {
+function addRole(){
   inquirer.prompt([
     {
       type: 'input',
       name: 'title',
-      message: 'What is your title?',
+      message: 'Enter a job title for the role'
     },
     {
       type: 'input',
       name: 'salary',
-      message: 'What is the salary of role?'
+      message: 'Enter a salary for the role'
     },
     {
       type: 'input',
       name: 'department_id',
-      message: 'What is the department id?'
+      message: 'Enter the department id for the role'
     },
   ]). then (answer => {
     db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [
       answer.title, answer.salary, answer.department_id
     ], (err) => {
       viewAllRoles()
-    });
+    })
   });
 }
+
+function addEmployee(){
+  inquirer.prompt([
+    {
+      type: 'input',
+      name: 'first_name',
+      message: 'Enter first name.'
+    },
+    {
+      type: 'input',
+      name: 'last_name',
+      message: 'Enter last name.'
+    },
+    {
+      type: 'input',
+      name: 'role_id',
+      message: 'Enter the role id.'
+    },
+    // do I need to ask who their manager is?  How do I do this since is different in seeds?
+  ]).then (answer => {
+    db.query('INSERT INTO employee (first_name, last_name, role_id) VALUES (?,?,?)', [
+      answer.first_name, answer.last_name, answer.role_id
+    ], (err) => {
+      viewAllEmployees()
+    })
+  });
+}
+//  how do I update role?
 
 app.use((req, res) => {
     res.status(404).end();

@@ -163,13 +163,14 @@ function addEmployee(){
 }
 
 //  how do I update role?
-// function updateEmployeeRole() {
-//   inquirer.prompt([
-//   {
-//     type: 'input',
-//     name: 'first_name, last_name',
-//     message: "Enter employee's first and last name:"
-//   },
+// // function updateEmployeeRole() {
+// //   inquirer.prompt([
+// //   {
+// //     type: 'list',
+// //     name: 'first_name, last_name',
+// //     message: 'Select employee record to update:',
+//        choices: 'employee'
+// //   },
 //   ]).then (answer => {
 //     db.query('INSERT INTO employee (role_id) VALUES (?)', [
 //       answer.role_id

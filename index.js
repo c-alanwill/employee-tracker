@@ -79,8 +79,22 @@ function viewAllRoles(){
   });
 }
 
+// function viewAllEmployees(){
+//   const sql = 'SELECT * FROM employee';
+//   db.query(sql, (err, result) => {
+//     if (err) return console.log(err);
+//     console.table(result);
+//     contain();
+//   });
+// }
+
 function viewAllEmployees(){
-  const sql = 'SELECT * FROM employee';
+  const sql = 'SELECT employee.id, employee.first_name, employee.last_name, title, salary, manager.first_name, manager.last_name, name
+    FROM employee
+    LEFT JOIN employee manager ON manager.id = employee.manager_id
+    LEFT JOIN role ON employee.role_id = role.id
+    LEFT JOIN department ON role.department_id = department.id;';
+  
   db.query(sql, (err, result) => {
     if (err) return console.log(err);
     console.table(result);

@@ -93,7 +93,7 @@ function addDepartment(){
     {
       type: 'input',
       name: 'department_name',
-      message: 'Enter a name for the department.'
+      message: 'Enter a name for the department:'
     }
   ]).then (answer => {
     db.query('INSERT INTO department(name) VALUES (?)', [
@@ -109,17 +109,17 @@ function addRole(){
     {
       type: 'input',
       name: 'title',
-      message: 'Enter a job title for the role'
+      message: 'Enter a job title for the role:'
     },
     {
       type: 'input',
       name: 'salary',
-      message: 'Enter a salary for the role'
+      message: 'Enter a salary for the role:'
     },
     {
       type: 'input',
       name: 'department_id',
-      message: 'Enter the department id for the role'
+      message: 'Enter the department id for the role:'
     },
   ]). then (answer => {
     db.query('INSERT INTO role (title, salary, department_id) VALUES (?,?,?)', [
@@ -135,28 +135,50 @@ function addEmployee(){
     {
       type: 'input',
       name: 'first_name',
-      message: 'Enter first name.'
+      message: 'Enter first name:'
     },
     {
       type: 'input',
       name: 'last_name',
-      message: 'Enter last name.'
+      message: 'Enter last name:'
     },
     {
       type: 'input',
       name: 'role_id',
-      message: 'Enter the role id.'
+      message: 'Enter the role id:'
     },
-    // do I need to ask who their manager is?  How do I do this since is different in seeds?
+    {
+      type: 'input',
+      name: 'manager_id',
+      message: "Enter the manager id for the employee:"
+    },
+    // How do I do manager?  This is different in seeds? I added lines 151 to 153 and then added manager_id to line 157 and answer.manager_id to line 158.
   ]).then (answer => {
-    db.query('INSERT INTO employee (first_name, last_name, role_id) VALUES (?,?,?)', [
-      answer.first_name, answer.last_name, answer.role_id
+    db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?)', [
+      answer.first_name, answer.last_name, answer.role_id, answer.manager_id
     ], (err) => {
       viewAllEmployees()
     })
   });
 }
+
 //  how do I update role?
+// function updateEmployeeRole() {
+//   inquirer.prompt([
+//   {
+//     type: 'input',
+//     name: 'first_name, last_name',
+//     message: "Enter employee's first and last name:"
+//   },
+//   ]).then (answer => {
+//     db.query('INSERT INTO employee (role_id) VALUES (?)', [
+//       answer.role_id
+//     ], (err) => {
+//       viewAllEmployees()
+//     })
+//   });
+// }
+
 
 app.use((req, res) => {
     res.status(404).end();
@@ -172,35 +194,5 @@ app.listen(PORT, () => {
 
 
 
-
-
-
-
-
-
-
-
-
-
-  // On line 65 if it's not all you will have to write different.  See around :45 minutes in OOP day 1
-
-  // function addDepartment() {
-//   const sql = 'SELECT * FROM department';
-//   db.query(sql, (err, result) => {
-//     if (err) return console.log(err);
-//     console.table(result);
-//     contain();
-//   });
-  
-  // Query database - department refers to the table
-// db.query('SELECT * FROM department', function (err, results) {
-//   console.log(results);
-// });
-
-// module.exports = db;
-
-// Default response for any other request (Not Found)
-
-
-    //  You can do lines 71 through 77 different using promise.  See video at 49:00 and after.  When you get into tougher callbacks you have to nest and becomes callback hell when looking at bonus, but not sure if it applies to the non-bonus callbacks we need to do.
+    //  You can use promises.  When you have to prompt the user more than once you have to do it inside the callback and nest it.  When you get into tougher callbacks like in bonus you have to nest.
 

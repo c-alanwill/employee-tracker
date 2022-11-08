@@ -79,21 +79,8 @@ function viewAllRoles(){
   });
 }
 
-// function viewAllEmployees(){
-//   const sql = 'SELECT * FROM employee';
-//   db.query(sql, (err, result) => {
-//     if (err) return console.log(err);
-//     console.table(result);
-//     contain();
-//   });
-// }
-
 function viewAllEmployees(){
-  const sql = 'SELECT employee.id, employee.first_name, employee.last_name, title, salary, manager.first_name, manager.last_name, name
-    FROM employee
-    LEFT JOIN employee manager ON manager.id = employee.manager_id
-    LEFT JOIN role ON employee.role_id = role.id
-    LEFT JOIN department ON role.department_id = department.id;';
+  const sql = 'SELECT employee.id, employee.first_name, employee.last_name, title, salary, CONCAT(manager.first_name, " ", manager.last_name) AS manager, department.name FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id LEFT JOIN employee manager ON manager.id = employee.manager_id;';
   
   db.query(sql, (err, result) => {
     if (err) return console.log(err);
@@ -166,34 +153,14 @@ function addEmployee(){
       name: 'manager_id',
       message: "Enter the manager id for the employee:"
     },
-    // How do I do manager?  This is different in seeds? I added lines 151 to 153 and then added manager_id to line 157 and answer.manager_id to line 158.
   ]).then (answer => {
-    db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?)', [
+    db.query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES (?,?,?,?)', [
       answer.first_name, answer.last_name, answer.role_id, answer.manager_id
     ], (err) => {
       viewAllEmployees()
     })
   });
 }
-
-//  how do I update role?
-// // function updateEmployeeRole() {
-// //   inquirer.prompt([
-// //   {
-// //     type: 'list',
-// //     name: 'first_name, last_name',
-// //     message: 'Select employee record to update:',
-//        choices: 'employee'
-// //   },
-//   ]).then (answer => {
-//     db.query('INSERT INTO employee (role_id) VALUES (?)', [
-//       answer.role_id
-//     ], (err) => {
-//       viewAllEmployees()
-//     })
-//   });
-// }
-
 
 app.use((req, res) => {
     res.status(404).end();
@@ -202,12 +169,3 @@ app.use((req, res) => {
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
-
-
-
-
-
-
-
-    //  You can use promises.  When you have to prompt the user more than once you have to do it inside the callback and nest it.  When you get into tougher callbacks like in bonus you have to nest.
-

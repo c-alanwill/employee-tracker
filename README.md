@@ -80,9 +80,9 @@ The database schema as shown in the following image:
 
 ## Installation
 
-The code for this project can be found on GitHub at: https://github.com/c-alanwill/software-engineering-team
+The code for this project can be found on GitHub at: https://github.com/c-alanwill/employee-tracker
 
-A link to a video that shows a walkthrough demonstrating how this readme works is available at: https://drive.google.com/file/d/1YbcsrAUzzKRgOVt3T5Ul_SnRI8NfqP0d/view?usp=sharing
+A link to a video that shows a walkthrough demonstrating how this readme works is available at: https://drive.google.com/file/d/1hYZIiH_7irIb0jmRP0-DzZEkAsUq4Cr3/view?usp=sharing
 
 ## Usage
 

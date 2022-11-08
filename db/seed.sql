@@ -29,5 +29,3 @@ UPDATE employee SET manager_id = 2 WHERE id = 1;
 UPDATE employee SET manager_id = 4 WHERE id = 3;
 UPDATE employee SET manager_id = 6 WHERE id = 5;
 UPDATE employee SET manager_id = 8 WHERE id = 7;
-
---  I need to show in terminal for view all employees their title, salary and department, and could do manager name instead of id (everything in role).  Use Joins.
